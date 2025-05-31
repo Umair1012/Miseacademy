@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Course Details - Mise Academy</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Optional styling */
+    .btn-toggle {
+      cursor: pointer;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -23,7 +36,7 @@
     <section class="course-detail">
       <h2>[Foundation of Cloud Computing]</h2>
       <p>Watch Every Video in series</p>
-      <ul>
+      <ul class="course-list" id="foundation-list">
         <li><a href="https://youtu.be/umeUvqy9VRU?si=L5hB3UzkjavMKV25">Orientation Session. Introduction of Course</a></li>
         <li><a href="https://youtu.be/hdhmtrT99DI?si=j1WLaCrnisjxrzb7">Build you Cloud Career with LinkedIn</a></li>
         <li><a href="https://youtu.be/DF5TdBM9GWM?si=JGwP2MQ6YgVITrU0">Computers, Server & Operating System</a></li>
@@ -39,10 +52,12 @@
         <li><a href="https://youtu.be/u8JisKvSeOg?si=gJn7rWqszapQLu4b">Upload Files/Code on Github</a></li>
         <li><a href="https://youtu.be/hdhmtrT99DI?si=j1WLaCrnisjxrzb7">Build you Cloud Career with LinkedIn</a></li>
       </ul>
+      <button class="btn-toggle" data-target="foundation-list">Show More</button>
+
       <h2>[Cloud Administrator Course]</h2>
       <p>Watch Every Video in series</p>
-      <ul>
-        <h3>[Linux Essentials Commands]</h3>
+      <h3>[Linux Essentials Commands]</h3>
+      <ul class="course-list" id="cloud-admin-list">
         <li><a href="https://youtu.be/umeUvqy9VRU?si=L5hB3UzkjavMKV25">Orientation Session. Introduction of Course</a></li>
         <li><a href="https://youtu.be/hdhmtrT99DI?si=j1WLaCrnisjxrzb7">Build you Cloud Career with LinkedIn</a></li>
         <li><a href="https://youtu.be/1kpHLJ8prLQ?si=bEG3avqxyTAn60EU">Create AWS Account using NayaPay Debit Card</a></li>
@@ -62,6 +77,7 @@
         <li><a href="https://youtu.be/3MenlqmlO4U?si=HZN_OM_zuvQjktzi">Master AWK Commmands in Linux</a></li>
         <li><a href="https://youtu.be/kACX7tvn-Zs?si=5qnbkM4r4VmtEXzl">Master SED Commands in Linux</a></li>
       </ul>
+      <button class="btn-toggle" data-target="cloud-admin-list">Show More</button>
     </section>
   </main>
 
@@ -70,5 +86,34 @@
       <p>© 2025 Mise Academy. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll('.btn-toggle').forEach(button => {
+      const listId = button.getAttribute('data-target');
+      const list = document.getElementById(listId);
+      const items = list.querySelectorAll('li');
+      const showCount = 5;
+      let expanded = false;
+
+      function updateList() {
+        items.forEach((item, index) => {
+          if (!expanded && index >= showCount) {
+            item.style.display = 'none';
+          } else {
+            item.style.display = 'list-item';
+          }
+        });
+        button.textContent = expanded ? 'Show Less' : 'Show More';
+      }
+
+      // Initialize list
+      updateList();
+
+      button.addEventListener('click', () => {
+        expanded = !expanded;
+        updateList();
+      });
+    });
+  </script>
 </body>
 </html>
