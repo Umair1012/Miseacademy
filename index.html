@@ -5,6 +5,143 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mise Academy - Home</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Reset & basics */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      background: #f4f4f4;
+      padding: 15px 0;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+    .nav-links li {
+      list-style: none;
+    }
+    .nav-links a {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5); /* dark overlay for readability */
+      border-radius: 8px;
+      z-index: 0;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      z-index: 1;
+      max-width: 800px;
+      line-height: 1.2;
+    }
+
+    /* Courses Section */
+    .courses h3 {
+      margin-bottom: 15px;
+      font-size: 2rem;
+      color: #222;
+    }
+    .course-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+    .course-card h4 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: #007BFF;
+    }
+    .course-card ul {
+      margin: 10px 0 20px 20px;
+      list-style-type: disc;
+    }
+    .course-card p {
+      margin: 8px 0;
+      font-size: 1.1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      background-color: #007BFF;
+      color: white;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      .course-card {
+        padding: 15px;
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -22,23 +159,23 @@
 
   <main class="container">
     <section class="hero">
-      <h2>Welcome to Mise Academy</h2>
-      <p>Secure Your Future with Cloud, AI and Security</p>
+      <h2>Become Cloud Administrator and Get Job Ready</h2>
     </section>
 
     <section class="courses">
-      <h3>Become Cloud Administrator</h3>
+      <h3>Cloud Administrator Course</h3>
       <div class="course-card">
         <h4>Description</h4>
         <p>3-months intensive training of Cloud with hands-on projects and job-ready skills</p>
         <p>This course covers practical knowledge in:</p>
-      <ul>
-        <li>Linux Fundamentals</li>
-        <li>Docker & Jenkins CI/CD Pipelines</li>
-        <li>AWS & Azure Networking and Security</li>
-        <li>Terraform Infrastructure as Code</li>
-        <li>Real-World Projects + Internship</li>
-      </ul>
+        <ul>
+          <li>Linux Fundamentals</li>
+          <li>Docker & Jenkins CI/CD Pipelines</li>
+          <li>AWS & Azure Networking and Security</li>
+          <li>Terraform Infrastructure as Code</li>
+          <li>Real-World Projects + Internship</li>
+	   <li>Career Guidance + Interview Preparation</li>
+        </ul>
         <a class="btn" href="course.html">View Course</a>
       </div>
     </section>
