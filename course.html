@@ -4,10 +4,149 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Course Details - Mise Academy</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #0056b3;
+      text-decoration: underline;
+      outline: none;
+    }
+
+    header, footer {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+    header h1, footer p {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+          display: inline-block;
+    }
+    nav ul li a:hover, nav ul li a:focus,
+    nav ul li a.active {
+      background-color: #2563eb;
+      outline: none;
+      text-decoration: none;
+      color: #ffcc00;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #1e40af;
+      border-bottom: 3px solid #3b82f6;
+      padding-bottom: 0.3rem;
+    }
+    main h3 {
+      margin-top: 1.5rem;
+      font-size: 1.3rem;
+      color: #2563eb;
+    }
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #374151;
+    }
+
+    .course-detail {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+
+    .course-list {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      transition: max-height 0.5s ease;
+    }
+    .course-list li {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .btn-toggle {
+      cursor: pointer;
+      background-color: #2563eb;
+      border: none;
+      color: white;
+      padding: 10px 22px;
+      margin: 1rem 0 0 0;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 3px 6px rgba(37, 99, 235, 0.5);
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      user-select: none;
+    }
+    .btn-toggle:hover, .btn-toggle:focus {
+      background-color: #1d4ed8;
+      outline: none;
+      box-shadow: 0 5px 12px rgba(29, 78, 216, 0.6);
+    }
+
+    /* Responsive Typography */
+    @media (max-width: 600px) {
+      header h1, footer p {
+        font-size: 1.4rem;
+      }
+      main h2 {
+        font-size: 1.5rem;
+      }
+      main h3 {
+        font-size: 1.1rem;
+      }
+      .btn-toggle {
+        width: 100%;
+        padding: 12px 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
+   <header>
     <div class="container">
       <h1>Mise Academy</h1>
       <nav>
@@ -63,6 +202,7 @@
         <li><a href="https://youtu.be/SiQQWtrYPXw?si=7qa8gyAW97b1UFOs" target="_blank" rel="noopener noreferrer">Linux Package Management</a></li>
       </ul>
       <button class="btn-toggle" aria-expanded="false" aria-controls="cloud-admin-list" data-target="cloud-admin-list">Show More</button>
+
     </section>
   </main>
 
@@ -72,6 +212,36 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('.btn-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const list = document.getElementById(targetId);
+        if (!list) return;
+
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !expanded);
+        button.textContent = expanded ? 'Show More' : 'Show Less';
+
+        // Toggle max-height for animation (optional)
+        if (expanded) {
+          list.style.maxHeight = '300px'; // show limited height by default
+          list.style.overflow = 'hidden';
+          // For simplicity, we could hide the overflow initially, but if you want to collapse fully, do maxHeight=0
+        } else {
+          list.style.maxHeight = list.scrollHeight + 'px';
+          list.style.overflow = 'visible';
+        }
+      });
+
+      // Initialize all lists to collapsed state
+      const targetId = button.getAttribute('data-target');
+      const list = document.getElementById(targetId);
+      if (list) {
+        list.style.maxHeight = '300px'; // collapsed max height (shows partial items)
+        list.style.overflow = 'hidden';
+      }
+    });
+  </script>
 </body>
 </html>
