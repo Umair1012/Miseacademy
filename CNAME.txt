@@ -1,0 +1,7 @@
+miseacademy.com
+# Re-add the cleaned file
+git add CNAME.txt
+# Commit again without the secret
+git commit -m "Cleaned secret from CNAME.txt"
+# Push again
+git push origin main
